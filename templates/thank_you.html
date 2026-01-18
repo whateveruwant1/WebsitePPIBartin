@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terima Kasih | PPI Bartın</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body class="thank-you-page">
+    <div class="thank-you">
+      <h1>Terima kasih, {{ name or 'Sahabat PPI' }}!</h1>
+      <p>
+        Pesan Anda sudah kami terima. Tim PPI Bartın akan merespons melalui
+        {{ email }} sesegera mungkin.
+      </p>
+      <div class="thank-you-card">
+        <h3>Ringkasan Pesan</h3>
+        <p>{{ message }}</p>
+      </div>
+      <a href="{{ url_for('index') }}" class="button primary">Kembali ke Beranda</a>
+    </div>
+    <footer class="footer">
+      <p>&copy; {{ year }} PPI Bartın. Dibuat dengan semangat kebersamaan.</p>
+    </footer>
+  </body>
+</html>

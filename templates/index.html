@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPI Bartın | Perhimpunan Pelajar Indonesia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">PPI Bartın</div>
+        <div class="nav-links">
+          <a href="#tentang">Tentang</a>
+          <a href="#program">Program</a>
+          <a href="#acara">Acara</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#kontak" class="button">Kontak</a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <div>
+          <p class="tagline">Perhimpunan Pelajar Indonesia di Bartın, Turki</p>
+          <h1>Bersatu, Berkarya, Menginspirasi dari Bartın untuk Indonesia</h1>
+          <p class="subtitle">
+            PPI Bartın menjadi rumah bagi mahasiswa Indonesia di Bartın dengan
+            program akademik, sosial, dan budaya yang terintegrasi.
+          </p>
+          <div class="hero-actions">
+            <a href="#program" class="button primary">Lihat Program</a>
+            <a href="#kontak" class="button ghost">Gabung Sekarang</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Profil Singkat</h3>
+          <p>
+            Komunitas mahasiswa Indonesia yang aktif menjalin kolaborasi dengan
+            kampus, diaspora, dan organisasi lokal.
+          </p>
+          <ul>
+            <li>Berbasis di Bartın Üniversitesi</li>
+            <li>Kolaborasi internasional</li>
+            <li>Pusat informasi mahasiswa baru</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stats">
+        {% for stat in hero_stats %}
+        <div class="stat">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </header>
+
+    <section id="tentang" class="section about">
+      <div class="section-title">
+        <h2>Tentang PPI Bartın</h2>
+        <p>
+          Menguatkan solidaritas mahasiswa Indonesia di Bartın melalui layanan
+          informasi, advokasi akademik, dan kegiatan budaya.
+        </p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Visi</h3>
+          <p>
+            Menjadi organisasi mahasiswa yang inklusif, progresif, dan
+            berkontribusi nyata bagi Indonesia dan Turki.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3>Misi</h3>
+          <ul>
+            <li>Mendampingi mahasiswa baru dalam adaptasi.</li>
+            <li>Memfasilitasi kegiatan akademik dan kepemimpinan.</li>
+            <li>Mengembangkan diplomasi budaya Indonesia.</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>Nilai</h3>
+          <p>
+            Kebersamaan, integritas, dan inovasi menjadi landasan setiap program
+            kerja PPI Bartın.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="program" class="section">
+      <div class="section-title">
+        <h2>Program Unggulan</h2>
+        <p>Program yang dirancang untuk meningkatkan kapasitas anggota.</p>
+      </div>
+      <div class="cards">
+        {% for program in programs %}
+        <div class="card">
+          <h3>{{ program.title }}</h3>
+          <p>{{ program.summary }}</p>
+          <ul>
+            {% for item in program.highlights %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="acara" class="section alt">
+      <div class="section-title">
+        <h2>Agenda Terdekat</h2>
+        <p>Rangkaian acara yang akan memperkuat jejaring antar mahasiswa.</p>
+      </div>
+      <div class="timeline">
+        {% for event in events %}
+        <div class="timeline-item">
+          <div class="timeline-date">{{ event.date }}</div>
+          <div>
+            <h3>{{ event.name }}</h3>
+            <p>{{ event.location }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Pengurus Inti</h2>
+        <p>Tim yang memastikan setiap program berjalan dengan baik.</p>
+      </div>
+      <div class="leaders">
+        {% for leader in leaders %}
+        <div class="leader-card">
+          <div class="leader-avatar">{{ leader.name[0] }}</div>
+          <div>
+            <h3>{{ leader.name }}</h3>
+            <p>{{ leader.role }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="galeri" class="section alt">
+      <div class="section-title">
+        <h2>Galeri Kegiatan</h2>
+        <p>Cuplikan kegiatan terbaik PPI Bartın sepanjang tahun.</p>
+      </div>
+      <div class="gallery">
+        {% for item in gallery %}
+        <div class="gallery-card">
+          <div class="gallery-photo"></div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Apa Kata Mereka</h2>
+        <p>Testimoni dari anggota dan mitra PPI Bartın.</p>
+      </div>
+      <div class="testimonials">
+        {% for item in testimonials %}
+        <div class="testimonial">
+          <p>"{{ item.quote }}"</p>
+          <span>{{ item.name }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="kontak" class="section contact">
+      <div class="section-title">
+        <h2>Hubungi Kami</h2>
+        <p>Ingin kolaborasi atau bergabung? Tinggalkan pesan Anda.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" action="{{ url_for('contact') }}" method="post">
+          <label>
+            Nama Lengkap
+            <input type="text" name="name" placeholder="Nama Anda" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="nama@email.com" required />
+          </label>
+          <label>
+            Pesan
+            <textarea name="message" rows="5" placeholder="Tuliskan pesan" required></textarea>
+          </label>
+          <button type="submit" class="button primary">Kirim Pesan</button>
+        </form>
+        <div class="contact-card">
+          <h3>Kontak Resmi</h3>
+          <p>{{ contact.address }}</p>
+          <p><strong>Email:</strong> {{ contact.email }}</p>
+          <p><strong>Telepon:</strong> {{ contact.phone }}</p>
+          <div class="contact-highlight">
+            <h4>Jam Sekretariat</h4>
+            <p>Senin - Jumat, 09.00 - 17.00 (TRT)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; {{ year }} PPI Bartın. Dibuat dengan semangat kebersamaan.</p>
+    </footer>
+  </body>
+</html>
